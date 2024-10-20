@@ -1,7 +1,9 @@
+version: '3.8'
+
 services:
   laravel-app:
     build: .
-    image: laravel-app:latest
+    image: 192.168.33.10:8083/laravel-app:latest
     container_name: laravel-app
     restart: always
     ports:
@@ -26,5 +28,16 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
+  nexus:
+    image: sonatype/nexus3
+    container_name: nexus
+    restart: always
+    ports:
+      - "8081:8081"
+      - "8083:8083"
+    volumes:
+      - nexus-data:/nexus-data
+
 volumes:
   mysql-data:
+  nexus-data:
