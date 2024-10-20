@@ -12,6 +12,7 @@ services:
       - .:/var/www
     depends_on:
       - mysql
+    command: sh -c "while ! nc -z mysql 3306; do sleep 1; done; php-fpm"
 
   mysql:
     image: mysql:8.0
