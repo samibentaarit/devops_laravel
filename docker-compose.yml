@@ -1,5 +1,5 @@
 services:
-  laravel-app:
+  app:
     build: .
     image: laravel-app:latest
     container_name: laravel-app
