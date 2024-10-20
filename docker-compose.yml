@@ -7,7 +7,7 @@ services:
     container_name: laravel-app
     restart: always
     ports:
-      - "9000:80"    # Map localhost:9000 to the container’s port 80 (Laravel)
+      - "9000:9000"
     volumes:
       - .:/var/www
     depends_on:
@@ -21,7 +21,7 @@ services:
       MYSQL_DATABASE: laravel
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_USER: laraveluser
-      MYSQL_PASSWORD: Str0ngPassword!123
+      MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
     volumes:
