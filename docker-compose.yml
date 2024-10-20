@@ -7,7 +7,7 @@ services:
     container_name: laravel-app
     restart: always
     ports:
-      - "9000:9000"
+      - "9000:80"    # Map localhost:9000 to the container’s port 80 (Laravel)
     volumes:
       - .:/var/www
     depends_on:
