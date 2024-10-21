@@ -3,16 +3,16 @@ version: '3.8'
 services:
   laravel-app:
     build: .
-    image: 192.168.33.10:8083/laravel-app:latest
+    image: samibentaarit/laravel-app:latest
     container_name: laravel-app
     restart: always
     ports:
-      - "5000:5000"
+      - "8000:80"
     volumes:
-      - .:/var/www
+      - .:/var/www/html
     depends_on:
       - mysql
-    command: sh -c "while ! nc -z mysql 3306; do sleep 1; done; php-fpm"
+    command: php artisan serve --host=0.0.0.0 --port=80
 
   mysql:
     image: mysql:8.0
@@ -28,16 +28,5 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
-  nexus:
-    image: sonatype/nexus3
-    container_name: nexus
-    restart: always
-    ports:
-      - "8081:8081"
-      - "8083:8083"
-    volumes:
-      - nexus-data:/nexus-data
-
 volumes:
   mysql-data:
-  nexus-data:
